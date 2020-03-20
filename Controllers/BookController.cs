@@ -38,8 +38,13 @@ namespace version1.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Book> Create(Book book)
+        public ActionResult<Book> Create(string bookName,string author, string category, decimal price)
         {
+            Book book = new Book();
+            book.BookName = bookName;
+            book.Author = author;
+            book.Category = category;
+            book.Price = price;
             _bookService.Create(book);
 
             return CreatedAtRoute("GetBook", new { id = book.Id.ToString() }, book);
