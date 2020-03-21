@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using version1.Identities;
 using version1.Services;
@@ -38,15 +34,16 @@ namespace version1.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Book> Create(string bookName,string author, string category, decimal price)
+        public ActionResult<Book> Create([FromForm]string bookName, [FromForm]string author, [FromForm]string category, [FromForm]decimal price, [FromForm] string isbn, [FromForm] string coverImageLink)
         {
             Book book = new Book();
             book.BookName = bookName;
             book.Author = author;
             book.Category = category;
             book.Price = price;
+            book.CoverImageLink = coverImageLink;
+            book.ISBN = isbn;
             _bookService.Create(book);
-
             return CreatedAtRoute("GetBook", new { id = book.Id.ToString() }, book);
         }
 

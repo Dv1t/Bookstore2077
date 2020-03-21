@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using version1.Identities;
 using version1.Services;
@@ -51,7 +47,7 @@ namespace version1.Controllers
                 user.Email = email;
                 user.Password = password;
                 _userService.Create(user);
-                return CreatedAtRoute("GetUser", new { id = user.Id.ToString() }, user);
+                return _userService.FindByLogin(login);
             }
             else
                 return NoContent();
