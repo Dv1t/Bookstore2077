@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 
 namespace version1.Identities
@@ -27,6 +28,6 @@ namespace version1.Identities
 
         public List<Comment> Comments { get; set; }
 
-        public List<SimpleBook> ReadBooks { get; set; }
+        public List<String> ReadBooks { get; set; }
     }
 }

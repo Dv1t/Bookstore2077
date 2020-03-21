@@ -25,16 +25,15 @@ namespace version1.Controllers
         [HttpPost]
         public int ReadBook([FromHeader]string userId, [FromHeader]string bookId)
         {
-            var book = _bookService.Get(bookId);
             var user = _userService.Get(userId);
             if(user.ReadBooks!=null)
             {
-                user.ReadBooks.Add(book.GetSimple());
+                user.ReadBooks.Add(bookId);
             }
             else
             {
-                user.ReadBooks = new List<SimpleBook>();
-                user.ReadBooks.Add(book.GetSimple());
+                user.ReadBooks = new List<String>();
+                user.ReadBooks.Add(bookId);
             }
             _userService.Update(userId, user);
             return 0;
