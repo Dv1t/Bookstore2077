@@ -33,7 +33,19 @@ namespace version1.Controllers
 
             if(sortOrder==0)
             {
-                //List<Book>.Sort(books, new BookComparer0());
+                books.Sort(new BookComparer0());
+            }
+            if (sortOrder == 1)
+            {
+                books.Sort(new BookComparer1());
+            }
+            if (sortOrder == 2)
+            {
+                books.Sort(new BookComparer2());
+            }
+            if (sortOrder == 3)
+            {
+                books.Sort(new BookComparer3());
             }
 
             return books;
