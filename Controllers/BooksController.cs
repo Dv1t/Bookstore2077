@@ -34,7 +34,7 @@ namespace version1.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Book> Create([FromForm]string bookName, [FromForm]string author, [FromForm]string category, [FromForm]decimal price, [FromForm] string isbn, [FromForm] string coverImageLink)
+        public ActionResult<Book> Create([FromForm]string bookName, [FromForm]string author, [FromForm]string category, [FromForm]float price, [FromForm] string isbn, [FromForm] string coverImageLink)
         {
             Book book = new Book();
             book.BookName = bookName;

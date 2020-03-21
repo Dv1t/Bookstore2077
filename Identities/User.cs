@@ -26,5 +26,7 @@ namespace version1.Identities
         public string Email { get; set; }
 
         public List<Comment> Comments { get; set; }
+
+        public List<SimpleBook> ReadBooks { get; set; }
     }
 }

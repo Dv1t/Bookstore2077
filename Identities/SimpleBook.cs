@@ -7,9 +7,10 @@ namespace version1.Identities
 {
     public class SimpleBook
     {
+        public string Id { get; set; }
         public string BookName { get; set; }
 
-        public decimal Price { get; set; }
+        public float Price { get; set; }
 
         public string Category { get; set; }
 

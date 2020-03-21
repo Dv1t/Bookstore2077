@@ -30,7 +30,7 @@ namespace version1.Controllers
             Comment comment = new Comment();
             comment.Author = user.Login;
             comment.Text = text;
-            comment.Data = DateTime.UtcNow.ToString();
+            comment.Date = DateTime.UtcNow.ToString();
             comment.Rating = rating;
             if (book.Comments != null)
             {

@@ -17,7 +17,7 @@ namespace version1.Identities
         public string ISBN { get; set; }
 
         [BsonElement("Price")]
-        public decimal Price { get; set; }
+        public float Price { get; set; }
 
         [BsonElement("Category")]
         public string Category { get; set; }
@@ -35,6 +35,7 @@ namespace version1.Identities
         public SimpleBook GetSimple()
         {
             SimpleBook simpleBook = new SimpleBook();
+            simpleBook.Id = this.Id;
             simpleBook.Author = this.Author;
             simpleBook.BookName = this.BookName;
             simpleBook.Category = this.Category;
