@@ -35,6 +35,7 @@ namespace version1
             services.AddSingleton<IBookstoreDatabaseSettings>(sp =>
                 sp.GetRequiredService<IOptions<BookstoreDatabaseSettings>>().Value);
             services.AddSingleton<BookService>();
+            services.AddSingleton<UserService>();
             services.AddControllers();
         }
 
