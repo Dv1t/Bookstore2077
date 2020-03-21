@@ -23,7 +23,7 @@ namespace version1.Controllers
         }
 
         [HttpPost]
-        public Comment AddComment([FromForm] string userId, [FromForm] string bookId, [FromForm] string text)
+        public Comment AddComment([FromHeader] string userId, [FromHeader] string bookId, [FromHeader] string text,[FromHeader] float rating)
         {
             var book = _bookService.Get(bookId);
             var user = _userService.Get(userId);
@@ -31,6 +31,7 @@ namespace version1.Controllers
             comment.Author = user.Login;
             comment.Text = text;
             comment.Data = DateTime.UtcNow.ToString();
+            comment.Rating = rating;
             if (book.Comments != null)
             {
                 book.Comments.Add(comment);

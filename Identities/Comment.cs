@@ -7,5 +7,7 @@
         public string Author { get; set; }
 
         public string Data { get; set; }
+
+        public float Rating { get; set; }
     }
 }
