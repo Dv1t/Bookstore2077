@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using version1.Identities;
 using version1.Identities.Comparers;
@@ -22,10 +18,10 @@ namespace version1.Controllers
         }
 
         [HttpGet("{sortOrder:length(1)}", Name = "GetBooksList")]
-        public ActionResult<List<Book>> Get(int sortOrder)
+        public ActionResult<List<SimpleBook>> Get(int sortOrder)
         {
             List<Book> books = _bookService.Get();
-
+            List<SimpleBook> simpleBooks = new List<SimpleBook>();
             if (books == null)
             {
                 return NotFound();
@@ -48,7 +44,12 @@ namespace version1.Controllers
                 books.Sort(new BookComparer3());
             }
 
-            return books;
+            foreach (Book elem in books)
+            {
+                simpleBooks.Add(elem.GetSimple());
+            }
+
+            return simpleBooks;
         }
     }
 }

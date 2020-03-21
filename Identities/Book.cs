@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using System.Collections.Generic;
 
 namespace version1.Identities
 {
@@ -12,13 +13,35 @@ namespace version1.Identities
         [BsonElement("Name")]
         public string BookName { get; set; }
 
+        [BsonElement("ISBN")]
         public string ISBN { get; set; }
+
+        [BsonElement("Price")]
         public decimal Price { get; set; }
 
+        [BsonElement("Category")]
         public string Category { get; set; }
 
+        [BsonElement("Author")]
         public string Author { get; set; }
 
+        [BsonElement("CoverImageLink")]
         public string CoverImageLink { get; set; }
+
+        public float Rating { get; set; }
+
+        public List<Comment> Comments { get; set; }
+
+        public SimpleBook GetSimple()
+        {
+            SimpleBook simpleBook = new SimpleBook();
+            simpleBook.Author = this.Author;
+            simpleBook.BookName = this.BookName;
+            simpleBook.Category = this.Category;
+            simpleBook.Price = this.Price;
+            simpleBook.CoverImageLink = this.CoverImageLink;
+            simpleBook.Rating = this.Rating;
+            return simpleBook;
+        }
     }
 }
