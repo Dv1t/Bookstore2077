@@ -30,6 +30,10 @@ namespace version1.Identities
 
         public float Rating { get; set; }
 
+        public string Description { get; set; }
+
+        public List<string> Tags;
+        
         public List<Comment> Comments { get; set; }
 
         public SimpleBook GetSimple()
