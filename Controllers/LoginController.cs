@@ -20,7 +20,7 @@ namespace version1.Controllers
             _userService = userService;
         }
         [HttpPost]
-        public ActionResult<User> Login([FromBody] string login, [FromBody] string password)
+        public ActionResult<User> Login([FromHeader] string login, [FromHeader] string password)
         {
             var loginByLogin = _userService.FindByLogin(login);
             var loginByEmail = _userService.FindByEmail(login);

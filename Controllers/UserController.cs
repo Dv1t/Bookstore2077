@@ -38,7 +38,7 @@ namespace version1.Controllers
         }
 
         [HttpPost]
-        public ActionResult<User> Create([FromBody] string login, [FromBody] string password, [FromBody] string name, [FromBody] string surname, [FromBody] string email)
+        public ActionResult<User> Create([FromHeader] string login, [FromHeader] string password, [FromHeader] string name, [FromHeader] string surname, [FromHeader] string email)
         {
             var oldUser1 = _userService.FindByLogin(login);
             var oldUser2 = _userService.FindByEmail(email);
