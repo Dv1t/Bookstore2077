@@ -20,6 +20,21 @@ namespace version1.Controllers
             _userService = userService;
         }
 
+
+        [HttpGet("{id:length(24)}", Name = "GetRead")]
+        public ActionResult<List<String>> Read(string id)
+        {
+            var user = _userService.Get(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+            if(user.ReadBooks!=null)
+                return user.ReadBooks;
+            return new List<String>();
+        }
+
         [HttpPost]
         public int ReadBook([FromHeader]string userId, [FromHeader]string bookId)
         {

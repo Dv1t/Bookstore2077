@@ -16,6 +16,20 @@ namespace version1.Controllers
             _userService = userService;
         }
 
+        [HttpGet("{id:length(24)}", Name = "GetCart")]
+        public ActionResult<List<String>> Cart(string id)
+        {
+            var user = _userService.Get(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+            if(user.Cart!=null)
+                return user.Cart;
+            return new List<string>();
+        }
+
         [HttpPost]
         public int BuyBook([FromHeader]string userId, [FromHeader]string bookId)
         {
