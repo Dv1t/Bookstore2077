@@ -36,7 +36,7 @@ namespace version1.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Book> Create([FromForm]string bookName, [FromForm]string author, [FromForm]string category, [FromForm]float price, [FromForm] string isbn, [FromForm] string coverImageLink,[FromForm] string description, [FromForm] string tags)
+        public ActionResult<Book> Create([FromForm]string bookName, [FromForm]string author, [FromForm]string category, [FromForm]float price, [FromForm] string isbn, [FromForm] string coverImageLink,[FromForm] string description, [FromForm] string tags, [FromForm] int year)
         {
             Book book = new Book();
             book.BookName = bookName;
@@ -46,6 +46,7 @@ namespace version1.Controllers
             book.CoverImageLink = coverImageLink;
             book.ISBN = isbn;
             book.Description = description;
+            book.Year = year;
             List<string> tagsList =  tags.Split(';').ToList();
             book.Tags = tagsList;
             _bookService.Create(book);

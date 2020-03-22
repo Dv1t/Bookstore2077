@@ -29,5 +29,7 @@ namespace version1.Identities
         public List<Comment> Comments { get; set; }
 
         public List<String> ReadBooks { get; set; }
+
+        public List<String> Cart { get; set; }
     }
 }

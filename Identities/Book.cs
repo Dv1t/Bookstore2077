@@ -36,6 +36,8 @@ namespace version1.Identities
         
         public List<Comment> Comments { get; set; }
 
+        public int Year { get; set; }
+
         public SimpleBook GetSimple()
         {
             SimpleBook simpleBook = new SimpleBook();

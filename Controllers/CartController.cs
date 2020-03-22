@@ -1,39 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using version1.Identities;
 using version1.Services;
 
 namespace version1.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ReadController : ControllerBase
+    public class CartController : ControllerBase
     {
         private readonly UserService _userService;
 
-        public ReadController(BookService bookService, UserService userService)
+        public CartController(BookService bookService, UserService userService)
         {
             _userService = userService;
         }
 
         [HttpPost]
-        public int ReadBook([FromHeader]string userId, [FromHeader]string bookId)
+        public int BuyBook([FromForm]string userId, [FromForm]string bookId)
         {
             var user = _userService.Get(userId);
             if (user != null)
             {
-                if (user.ReadBooks != null)
+                if (user.Cart != null)
                 {
-                    user.ReadBooks.Add(bookId);
+                    user.Cart.Add(bookId);
                 }
                 else
                 {
-                    user.ReadBooks = new List<String>();
-                    user.ReadBooks.Add(bookId);
+                    user.Cart = new List<String>();
+                    user.Cart.Add(bookId);
                 }
             }
             else

@@ -46,6 +46,7 @@ namespace version1.Controllers
                 user.Surname = surname;
                 user.Email = email;
                 user.Password = password;
+                user.Cart = new List<string>();
                 _userService.Create(user);
                 return _userService.FindByLogin(login);
             }

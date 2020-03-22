@@ -43,6 +43,18 @@ namespace version1.Controllers
             {
                 books.Sort(new BookComparer3());
             }
+            if (sortOrder == 4)
+            {
+                books.Sort(new BookComparer4());
+            }
+            if (sortOrder == 5)
+            {
+                books.Sort(new BookComparer5());
+            }
+            if (sortOrder == 6)
+            {
+                books.Sort(new BookComparer6());
+            }
 
             foreach (Book elem in books)
             {
