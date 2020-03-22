@@ -17,7 +17,7 @@ namespace version1.Controllers
         }
 
         [HttpPost]
-        public int BuyBook([FromForm]string userId, [FromForm]string bookId)
+        public int BuyBook([FromHeader]string userId, [FromHeader]string bookId)
         {
             var user = _userService.Get(userId);
             if (user != null)
